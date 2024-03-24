@@ -1,9 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors")
+const cors = require("cors");
 const app = express();
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 
 app.use(
@@ -68,6 +68,12 @@ app.delete("/api/persons/:id", (request, response) => {
 	response.json(deletedPeronn);
 });
 
+const generateId = () => {
+	const maxId =
+		phonebook.length > 0 ? Math.max(...phonebook.map((n) => n.id)) : 0;
+	return maxId + 1;
+};
+
 app.post("/api/persons", (request, response) => {
 	const body = request.body;
 	if (!body.name || !body.number) {
@@ -86,7 +92,7 @@ app.post("/api/persons", (request, response) => {
 			.json({ error: "name or number already registered" });
 	}
 
-	const id = Math.floor(Math.random() * 1e9);
+	const id = generateId();
 	const person = {
 		id: id,
 		name: body.name,
