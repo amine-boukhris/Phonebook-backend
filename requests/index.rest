@@ -1,4 +1,16 @@
 GET http://localhost:3001/api/persons
 
 ###
-GET https://phonebook-backend-1fsw.onrender.com/api/persons
+GET http://localhost:3001/api/persons/66002a39701c276de50a9bd0
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "dr. stone",
+    "number": "10-000-000-000"
+}
+
+###
+DELETE http://localhost:3001/api/persons/66013ef34d499de9a05f9212
